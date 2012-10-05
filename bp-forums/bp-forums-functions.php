@@ -367,10 +367,6 @@ function bp_forums_reply_exists( $text = '', $topic_id = 0, $user_id = 0 ) {
 			$text = str_replace('$', '&dollar;', $text);
 		}
 
-		if ( strpos($text, '<!--') !== false ) {
-			$text = str_replace('<!--', '&lt;!&minus;&minus;', $text);
-		}
-
 		// BB_Query's post_text parameter does a MATCH, while we need exact matches
 		add_filter( 'get_posts_where', create_function( '$q', 'return $q . " AND p.post_text = \'' . $text . '\'";' ) );
 
